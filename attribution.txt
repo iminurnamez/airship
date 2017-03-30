@@ -1,0 +1,110 @@
+LICENSES
+
+CC0            
+CC-BY 3.0   https://creativecommons.org/licenses/by/3.0/legalcode 
+
+
+CODE
+
+Code is licensed CC0.
+
+GRAPHICS
+
+crystals
+Source: http://opengameart.org/content/rotating-crystal-animation-8-step
+Creator: http://opengameart.org/users/qubodup  http://qubodup.net/
+License: CC-BY 3.0
+
+explosion
+Source: http://opengameart.org/content/pixel-explosion-12-frames
+Creator: http://opengameart.org/users/j-robot
+License: CC-BY 3.0
+
+cave tiles by MrBeast. Commissioned by OpenGameArt.org (http://opengameart.org)
+Source: http://opengameart.org/content/cave-tileset-0
+Creator: http://opengameart.org/users/mrbeast
+License: CC-BY 3.0
+
+cacti, plants
+Source: http://opengameart.org/content/2d-platformer-desert-pack
+Creator: Tio Aimar
+License: CC-BY 3.0
+
+forest objects
+Source: http://opengameart.org/content/2d-platformer-forest-pack
+Creator: Tio Aimar
+License: CC-BY 3.0
+
+ocean objects
+Source: http://opengameart.org/content/2d-platformer-santorini-pack
+Creator: Tiio Aimar
+License: CC0
+
+winter objects
+Source: http://opengameart.org/content/2d-platformer-snow-pack
+Creator: Tiio Aimar
+License: CC0
+
+ui elements
+Source: http://opengameart.org/content/free-game-gui
+
+
+SOUNDS
+
+pickup sounds
+Source: http://opengameart.org/content/up-3x
+Creator: http://opengameart.org/users/qubodup http://qubodup.net/
+License: CC0
+
+waterfall
+Source: http://opengameart.org/content/stream-sounds
+Creator: kurt http://opengameart.org/users/kurt
+License: CC-BY 3.0
+
+crash
+Source: http://opengameart.org/content/2-wooden-squish-splatter-sequences
+Creator: Independent.nu
+License: CC0
+
+unlock
+Source: http://opengameart.org/content/door-open-door-close-set
+Creator:  Iwan 'qubodup' Gabovitch <qubodup@gmail.com> <qubodup.net>
+License: CC0
+
+negative sound
+Source: http://opengameart.org/content/gui-sound-effects
+Creator: http://opengameart.org/users/lokif
+License: CC0
+
+MUSIC
+
+mirage
+Source: http://opengameart.org/content/mirage
+Creator: syncopika http://opengameart.org/users/syncopika https://greenbearmusic.bandcamp.com/
+License: CC-BY 3.0 
+
+safari
+Source: http://opengameart.org/content/safari
+Creator: syncopika http://opengameart.org/users/syncopika
+License: CC-BY 3.0
+
+tropical
+Source: http://opengameart.org/content/tropical-bgm
+
+happy-tune
+http://opengameart.org/content/happy-tune
+
+blast-off
+http://opengameart.org/content/blast-off-0
+
+cool-beats
+Source: http://opengameart.org/content/cool-beats-10
+
+dusk
+Source: http://opengameart.org/content/dusk
+License: CC-BY 3.0
+
+chill
+Source: http://opengameart.org/content/chill-bgm
+License: CC-BY 3.0
+
