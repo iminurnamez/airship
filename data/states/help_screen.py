@@ -27,11 +27,9 @@ class HelpScreen(tools._State):
         top = 280
         self.jewels = pg.sprite.Group()
         self.labels = pg.sprite.Group()
-        self.msg_label = MultiLineLabel(prepare.FONTS["weblysleekuisb"],
-                                                      24, self.msg, "gray80",
-                                                      {"midtop": (prepare.SCREEN_RECT.centerx, 8)},
-                                                      bg=None, char_limit=64,
-                                                      align="center", vert_space=0)
+        self.msg_label = MultiLineLabel(self.msg, {"midtop": (prepare.SCREEN_RECT.centerx, 8)},
+                                                       font_size=24, text_color="gray80", char_limit=64, 
+                                                       font_path= prepare.FONTS["weblysleekuisb"])
         Label("Jewel Values", {"center": (prepare.SCREEN_RECT.centerx, 232)},
                 self.labels, text_color="antiquewhite", font_size=32)
         for color in colors:

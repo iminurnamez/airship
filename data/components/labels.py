@@ -45,7 +45,15 @@ LABEL_DEFAULTS = {
         "text_color": "white",
         "fill_color": None,
         "alpha": 255}
-
+MULTILINE_LABEL_DEFAULTS = {
+        "font_path": prepare.FONTS["weblysleekuisb"],
+        "font_size": 12,
+        "text_color": "white",
+        "fill_color": None,
+        "alpha": 255,
+        "char_limit": 42,
+        "align": "left",
+        "vert_space": 0}
 
 
 #Helper function for MultiLineLabel class
@@ -159,52 +167,56 @@ class Blinker(Label):
             self.timer -= self.frequency
             self.visible = not self.visible
             text = self.original_text if self.visible else ""
-            self.set_text(text)
-
-
-class MultiLineLabel(pg.sprite.Sprite):
+            self.set_text(text)       
+    
+    
+class MultiLineLabel(pg.sprite.Sprite, tools._KwargMixin):
     """Create a single surface with multiple lines of text rendered on it."""
-    def __init__(self, path, size, text, color, rect_attr, bg=None,
-                         char_limit=42, align="left", vert_space=0):
+    def __init__(self, text, rect_attr, *groups, **kwargs):
         """
-        Instantiate a MultiLineLabel object.
-
         ARGS
+        text: the text to be displayed on the screen
+        rect_attr: a dict of pygame.Rect attributes
+                        ex. {"midtop": (100, 100)}
+        groups: sprite groups the label should be added to
 
-        path: path to font
-        size: font size
-        text_color: color of rendered text
-        rect_attr: dict of Rect atrribute values for positioning the
-                       final surface, e.g., {"midbottom": (100, 100)}
-                       or {"centerx": 100, "bottom": 100}
-        bg: background color of final surface, transparent if None
+        KEYWORD ARGS
         char_limit: max number of characters in each line of text
                          text is split by words, not characters
         align: how text should be aligned/justified - valid args are
                  "left", "center", or "right"
         vert_space: vertical space in between each line
+        args that are not passed will use the default values in MULTILINE_LABEL_DEFAULTS
         """
-        super(MultiLineLabel, self).__init__()
+        super(MultiLineLabel, self).__init__(*groups)
+        self.process_kwargs("MultiLineLabel", MULTILINE_LABEL_DEFAULTS, kwargs)
+        self.rect_attr = rect_attr
+        self.make_image(text)
+        
+    def make_image(self, text):
         attr = {"center": (0, 0)}
-        lines = wrap_text(text, char_limit)
-        labels = [Label(line, attr, font_path=path, font_size=size,
-                              text_color=color, fill_color=bg) for line in lines]
+        lines = wrap_text(text, self.char_limit)
+        labels = [Label(line, attr, font_path=self.font_path, font_size=self.font_size,
+                              text_color=self.text_color, fill_color=self.fill_color) for line in lines]
         width = max([label.rect.width for label in labels])
-        spacer = vert_space*(len(lines)-1)
+        spacer = self.vert_space * (len(lines)-1)
         height = sum([label.rect.height for label in labels])+spacer
-        self.image = pg.Surface((width, height)).convert()
-        self.image.set_colorkey(pg.Color("black"))
-        self.image.fill(pg.Color("black"))
-        self.rect = self.image.get_rect(**rect_attr)
+        if self.fill_color is not None:
+            self.image = pg.Surface((width, height)).convert()
+            self.image.fill(self.fill_color)
+        else:
+            self.image = pg.Surface((width, height)).convert_alpha()
+            self.image.fill((0,0,0,0))
+        self.rect = self.image.get_rect(**self.rect_attr)
         aligns = {"left"  : {"left": 0},
-                  "center": {"centerx": self.rect.width//2},
-                  "right" : {"right": self.rect.width}}
+                      "center": {"centerx": self.rect.width//2},
+                      "right" : {"right": self.rect.width}}
         y = 0
         for label in labels:
-            label.rect = label.image.get_rect(**aligns[align])
+            label.rect = label.image.get_rect(**aligns[self.align])
             label.rect.top = y
             label.draw(self.image)
-            y += label.rect.height+vert_space
+            y += label.rect.height + self.vert_space
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)

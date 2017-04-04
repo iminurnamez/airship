@@ -4,7 +4,7 @@ import json
 import pygame as pg
 
 from .. import tools, prepare
-from ..components.labels import Label, Blinker
+from ..components.labels import Label, Blinker, MultiLineLabel
 from ..components.player import Player
 from ..components.banner import Banner
 from ..components.airship import Airship
@@ -94,7 +94,6 @@ class TitleScreen(tools._State):
         front_strip = banner.strips[0]
         self.top_line = [(self.airship.rect.left + 56, self.airship.rect.top + 28), front_strip.rect.topright]
         self.bottom_line = [(self.airship.rect.left + 56, self.airship.rect.top + 52), front_strip.rect.bottomright]
-
 
     def draw(self, surface):
         surface.fill(pg.Color(144, 215, 236))
