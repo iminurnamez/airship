@@ -14,7 +14,8 @@ class Airship(pg.sprite.Sprite):
         self.vx = .2
         self.vy = 0
         self.accel = .0015
-        self.image = prepare.GFX["airship"]
+        self.image = self.idle_image = prepare.GFX["airship-idle"]
+        self.active_image = prepare.GFX["airship-active"]
         self.rect = self.image.get_rect(center=self.pos)
         self.screen_rect = self.rect.copy()
         self.mask = pg.mask.from_surface(self.image)
@@ -31,7 +32,10 @@ class Airship(pg.sprite.Sprite):
         self.crash_sounds = [prepare.SFX["crash{}".format(x)] for x in range(1, 5)]
         for s in self.crash_sounds:
             s.set_volume(.2)
-        
+        self.sound_playing = False
+        self.sound = prepare.SFX["fireloop"]
+        self.sound.set_volume(.5)
+
     def update(self, dt):
         self.timer += dt
         if not self.exploded:
@@ -42,6 +46,14 @@ class Airship(pg.sprite.Sprite):
             self.vy += self.accel * dt
             if pg.mouse.get_pressed()[0]:
                 self.vy -= self.accel * 2 * dt
+                self.image = self.active_image
+                if not self.sound_playing:
+                    self.sound_playing = True
+                    self.sound.play(-1)
+            else:
+                self.sound.stop()
+                self.image = self.idle_image
+                self.sound_playing = False
             self.pos = self.pos[0] + (self.vx * dt), self.pos[1] + (self.vy * dt)
             self.rect.center = self.pos
             self.screen_rect.centery = self.rect.centery
@@ -57,6 +69,7 @@ class Airship(pg.sprite.Sprite):
             return 0
                 
     def explode(self):
+        self.sound.stop()
         choice(self.crash_sounds).play()
         self.explosion_num = 0
         self.image = self.explosions[self.explosion_num]

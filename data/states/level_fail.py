@@ -37,7 +37,7 @@ class LevelFailScreen(tools._State):
         elif event.type == pg.KEYUP:
             if event.key == pg.K_ESCAPE:
                 self.quit = True
-        elif event.type == pg.MOUSEBUTTONUP and self.timer >= 1000:
+        elif event.type == pg.MOUSEBUTTONUP and self.timer >= prepare.FADE_TIME:
             self.done = True
             self.next = "GAMEPLAY"
             pg.mixer.music.fadeout(1000)

@@ -5,6 +5,8 @@ from . import tools
 
 SCREEN_SIZE = (1280, 720)
 ORIGINAL_CAPTION = "Game"
+FADE_TIME = 500
+
 
 pg.mixer.pre_init(44100, -16, 1, 512)
 

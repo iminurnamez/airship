@@ -76,6 +76,11 @@ Source: http://opengameart.org/content/gui-sound-effects
 Creator: http://opengameart.org/users/lokif
 License: CC0
 
+Fire Loop by Iwan 'qubodup' Gabovitch http://opengameart.org/users/qubodup
+Source: https://opengameart.org/content/fire-loop
+Creator: Iwan 'qubodup' Gabovitch <qubodup@gmail.com> <qubodup.net>
+License: CC-BY 3.0
+
 MUSIC
 
 mirage

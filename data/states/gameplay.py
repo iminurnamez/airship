@@ -83,7 +83,7 @@ class Gameplay(tools._State):
                 self.done = True
                 self.next = "LEVELWIN"
                 self.persist["level"] = self.level
-                pg.mixer.music.fadeout(1000)
+                pg.mixer.music.fadeout(prepare.FADE_TIME)
                 self.persist["score"] = self.score
             if self.offset >= self.level.rect.w - prepare.SCREEN_RECT.w:
                 self.offset = self.level.rect.w - prepare.SCREEN_RECT.w
@@ -92,11 +92,11 @@ class Gameplay(tools._State):
                         or self.airship.rect.top > prepare.SCREEN_RECT.bottom):
                 self.airship.explode()
                 self.msg = "You crashed"
-                pg.mixer.music.fadeout(1000)
+                pg.mixer.music.fadeout(prepare.FADE_TIME)
             if self.airship.rect.bottom < 0:
                 self.airship.explode()
                 self.msg = "You flew too high"
-                pg.mixer.music.fadeout(1000)
+                pg.mixer.music.fadeout(prepare.FADE_TIME)
             if self.current_jewel.rect.right < self.airship.rect.left:
                 try:
                     self.current_jewel = self.level.jewel_goals.pop()
